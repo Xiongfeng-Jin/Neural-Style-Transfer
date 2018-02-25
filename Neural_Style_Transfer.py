@@ -23,18 +23,19 @@ class NeuralStyleTransfer:
 		self.__preprocessImages__()
 		self.model = self.load_vgg_model(modelPath)
 		self.STYLE_LAYERS = [
-			('conv1_2', 4/32.5),
-			('conv2_1', 4/32.5),
-			('conv2_2', 4/32.5),
-			('conv3_1', 3.5/32.5),
-			('conv3_2', 3/32.5),
-			('conv3_3', 2/32.5),
-			('conv3_4', 1/32.5),
-			('conv4_4', 1/32.5),
-			('conv5_1', 1/32.5),
-			('conv5_2', 2/32.5),
-			('conv5_3', 3/32.5),
-			('conv5_4', 4/32.5)]
+			('conv1_2', 4/42.5),
+			('conv2_1', 4/42.5),
+			('conv2_2', 4/42.5),
+			('conv3_1', 3.5/42.5),
+			('conv3_2', 3/42.5),
+			('conv3_3', 2/42.5),
+			('conv3_4', 1/42.5),
+			('conv4_3', 2/42.5),
+			('conv4_4', 3/42.5),
+			('conv5_1', 4/42.5),
+			('conv5_2', 4/42.5),
+			('conv5_3', 4/42.5),
+			('conv5_4', 4/42.5)]
 		self.alpha = tf.placeholder(tf.float32)
 		self.beta = 6
 		self.learningRate = 2.0
@@ -350,7 +351,7 @@ class NeuralStyleTransfer:
 		J = alpha*J_content+beta*J_style		
 		return J
 
-	def run(self, num_iterations = 200):
+	def run(self, num_iterations = 6000):
 		
 		# Initialize global variables (you need to run the session on the initializer)
 		self.sess.run(tf.global_variables_initializer())
@@ -363,7 +364,7 @@ class NeuralStyleTransfer:
 			# Run the session on the train_step to minimize the total cost
 
 			Jc, Js = self.sess.run([ self.contentCost, self.styleCost])
-			alpha = (Js / Jc)*4
+			alpha = (Js / Jc)*3
 			self.sess.run(self.train_step,feed_dict={self.alpha:alpha})
 			
 			# Compute the generated image by running the session on the current model['input']
@@ -377,7 +378,7 @@ class NeuralStyleTransfer:
 				print("total cost = %.4g" % Jt)
 				print("content cost = %.4g" % Jc)
 				print("style cost = %.4g" % Js)
-				self.save_image(str(i)+".jpg", self.generatedImage)
+				# self.save_image(str(i)+".jpg", self.generatedImage)
 						
 		# save last generated image
 		self.save_image('generated_image.jpg', self.generatedImage)
