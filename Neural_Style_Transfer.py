@@ -364,7 +364,7 @@ class NeuralStyleTransfer:
 			# Run the session on the train_step to minimize the total cost
 
 			Jc, Js = self.sess.run([ self.contentCost, self.styleCost])
-			alpha = (Js / Jc)*3
+			alpha = (Js / Jc)
 			self.sess.run(self.train_step,feed_dict={self.alpha:alpha})
 			
 			# Compute the generated image by running the session on the current model['input']
