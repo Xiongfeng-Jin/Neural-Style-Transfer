@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
 import scipy.io
@@ -358,13 +359,13 @@ class NeuralStyleTransfer:
 		
 		# Run the noisy input image (initial generated image) through the model. Use assign().
 		self.sess.run(self.model['input'].assign(self.generatedImage))
+		adder = 0
 		
 		for i in range(num_iterations):
 		
 			# Run the session on the train_step to minimize the total cost
 
-			Jc, Js = self.sess.run([ self.contentCost, self.styleCost])
-			alpha = (Js / Jc)
+			alpha = 20*self.beta
 			self.sess.run(self.train_step,feed_dict={self.alpha:alpha})
 			
 			# Compute the generated image by running the session on the current model['input']
@@ -378,7 +379,7 @@ class NeuralStyleTransfer:
 				print("total cost = %.4g" % Jt)
 				print("content cost = %.4g" % Jc)
 				print("style cost = %.4g" % Js)
-				# self.save_image(str(i)+".jpg", self.generatedImage)
+				self.save_image(str(i)+".jpg", self.generatedImage)
 						
 		# save last generated image
 		self.save_image('generated_image.jpg', self.generatedImage)
