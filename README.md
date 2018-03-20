@@ -12,5 +12,7 @@ after the Neural Style Transfer finishes its task, you will find a folder named 
 <div align="center">
 	<img src="content.jpg" width="30%">
 	<img src="style.jpg" width="30%">
-	<img src="output/generated_image.jpg" width="30%">
+</div>
+<div align="center">
+	<img src="output/generated_image.jpg" width="60%">
 </div>
