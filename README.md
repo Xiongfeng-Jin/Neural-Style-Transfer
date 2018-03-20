@@ -8,10 +8,10 @@
 You can download the vgg-19 model in this link:https://mega.nz/#!pIFimCCA!9nFD0KJ_ysx0NWfEs90bPkjvBMUn1Y82pYF-FrWLHw8
 
 after the Neural Style Transfer finishes its task, you will find a folder named output in the same directory, and the result will be there.
-<!--
-<div>
-	<img src="content.jpg">
-</div>
--->
+<pre>
+	<div>
+		<img src="content.jpg">
+	</div>
+</pre>
 ![alt text](style.jpg)
 ![alt text](output/generated_image.jpg)
