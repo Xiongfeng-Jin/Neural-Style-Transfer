@@ -31,10 +31,14 @@ In order to understand the Neural style transfer, we need to look at the feature
 
 If we go deeper to the ConvNet, the deeper layers will see a larger region of the image where each pixel could hypothetically affect the output of these later layers of the neural network. We can see that layer 2 is looking for a bit more complex shapes and patterns than layer 1, and layer 3 is looking for rounded shapes and people. Layer 4 is detecting dogs, water etc, and layer 5 is detecting even more sophisticated things.
 
-<img src="resources/Screen Shot 2018-03-20 at 11.38.51 PM.png" width="40%">
-<img src="resources/Screen Shot 2018-03-20 at 11.45.23 PM.png" width="40%">
-<img src="resources/Screen Shot 2018-03-20 at 11.54.45 PM.png" width="40%">
-<img src="resources/Screen Shot 2018-03-20 at 11.54.56 PM.png" width="40%">
+<div align="center">
+<img src="/Users/jin/Desktop/Screen Shot 2018-03-20 at 11.38.51 PM.png" width="40%">
+<img src="/Users/jin/Desktop/Screen Shot 2018-03-20 at 11.45.23 PM.png" width="40%">
+</div>
+<div align="center">
+<img src="/Users/jin/Desktop/Screen Shot 2018-03-20 at 11.54.45 PM.png" width="40%">
+<img src="/Users/jin/Desktop/Screen Shot 2018-03-20 at 11.54.56 PM.png" width="40%">
+</div>
 
 So we've gone a long way from detecting relatively simple things such as edges in layer 1 to textures in layer 2, up to detecting very complex objects in the deeper layers.
 
